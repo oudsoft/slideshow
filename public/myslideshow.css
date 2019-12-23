@@ -1,0 +1,38 @@
+//myslideshow.css
+
+.backgroundTransition {
+
+}
+
+.portrait {
+	height: 500px;
+	width: auto;
+}
+
+.landscape {
+	width: 800px;
+	height: auto;
+}
+
+.fullview {
+	width: 100%;
+	height: auto;
+}
+
+#NumberPreview{
+	display: none;
+	font-size: 11px;
+}
+
+#ControlPanel {
+	text-align: center;
+	display: block;
+}
+
+.display-inline {
+    display: inline !important;
+}
+
+.hide {
+	display: none;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Wall Paper Art 01</title>
+	  <style>
+
+	  </style>
+  </head>
+  <body>
+      <div class="backgroundTransition" >
+          <div class="content">
+              <h1>Gallery Code::Wall Paper Art 01</h1>
+          </div>
+      </div>
+		<div id="ControlPanel">
+			<input type='button' value='Check' onclick= 'check()'/> 
+			<input type='button' value='Start...' onclick= 'show()'/> 
+			<input type='button' value='Stop' onclick= 'stop()'/> 
+			<input type='button' value='Continue...' onclick= 'showcontinue()'/> 
+			<div id="NumberPreview"></div>
+	  </div>
+
+	<script src="../../jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+	<script src="../../jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+	<link href="../../jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet">
+	<link href="../../myslideshow.css" rel="stylesheet">
+
+	<script src="../../myslideshow.js"></script>
+    <script type="text/javascript">
+		function doGetFileItems(params){
+			return new Promise(function(resolve, reject) {
+				var url = "/pic1/listfiles?";
+				//console.log(JSON.stringify(params));
+				$.get(url, params, function(data){
+					resolve(data);
+				}).fail(function(error) { 
+					console.log(JSON.stringify(error));
+					reject(error); 
+				});
+			});
+		}
+
+		$(document).ready(function(){
+			doGetFileItems().then((files)=>{
+				//titleFileName = 'nik114SRS_300152';
+				imgs = files;
+				//console.log(files);
+				endNum = files.length;
+				check();
+			});
+		});
+      </script>
+  </body>
+</html>
