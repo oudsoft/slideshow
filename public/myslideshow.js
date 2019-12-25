@@ -84,7 +84,7 @@ function show() {
 
 	(function doSlideShow (i) { 
 		view(i);	         
-		setTimeout(function () { 
+		let timer = setTimeout(function () { 
 			//console.log(imgHeight);
 			//console.log(screen.height);
 			//$('img').css("width", 'auto');
@@ -92,9 +92,9 @@ function show() {
 
 			$('.backgroundTransition').animate({"zoom": "-=50%"}, 2500);
 			if (i < endNum) {
-				if (isShow)	{ i++; currentShow = i;	 doSlideShow(i); }
+				if (isShow)	{ i++; currentShow = i; doSlideShow(i); } else {clearTimeout(timer); }
 			} else {
-				if (isShow)	{ i = 1; currentShow = i; doSlideShow(i); }
+				if (isShow)	{ i = 1; currentShow = i; doSlideShow(i); } else {clearTimeout(timer); }
 			}
 		}, delayTime)
 	})(i);     
@@ -113,15 +113,13 @@ function showcontinue() {
 
 	(function doSlideShow (i) {
 		view(i);		
-		setTimeout(function () { 
+		let timer = setTimeout(function () { 
 			$('.backgroundTransition').animate({"zoom": "-=50%"}, 2500);
 			if (i < endNum) {
-				if (isShow)	{ i++; }
+				if (isShow)	{ i++; currentShow = i; doSlideShow(i); } else {clearTimeout(timer); }
 			} else {
-				if (isShow)	{ i = 1; }
+				if (isShow)	{ i = 1; currentShow = i; doSlideShow(i); } else {clearTimeout(timer); }
 			}
-			currentShow = i;
-			doSlideShow(i); 
 		}, delayTime)
 	})(i);     
 }
